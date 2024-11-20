@@ -1,0 +1,7 @@
+//Filterring Category wise
+Steps 
+1:- create a CategorySideMenu.jsx under component folder.
+2:-in Home.jsx we design a menu because we are using    <NewFeed/> in Home.jsx file.
+3.create a container and in this create two Columns ,in left column take <CategorySideMenu/> and in right take <NewFeed/>
+
+

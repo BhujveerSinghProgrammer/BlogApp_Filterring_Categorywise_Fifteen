@@ -63,7 +63,7 @@ function NewFeed() {
   return (
     <div className="container-fluid">
       <Row>
-        <Col md={{ size: 10, offset: 1 }}>
+        <Col md={{ size: 12}}>
           <h3>Blogs Count ({postContent?.TotalElements})</h3>
 
           <InfiniteScroll
