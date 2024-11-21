@@ -1,5 +1,7 @@
 import React from 'react'
-import { ListGroup, ListGroupItem } from 'reactstrap'
+import { loadAllCategories } from "../services/category-service";
+import { useEffect, useState, useRef } from "react";
+import { Card, CardBody, Input, Form, Label, Container, Button,ListGroup, ListGroupItem } from "reactstrap";
 
 function CategorySideMenu() {
 
@@ -23,9 +25,20 @@ function CategorySideMenu() {
           <ListGroupItem action={true} className='border-0'>
                   All Blogs
           </ListGroupItem>
-          {categories && categories.map}
+
+
+         {categories && categories.map((category)=>{
+            return(
+                <ListGroupItem className='border-0'  action={true}  value={category.Id} key={category.Id}>
+                     {category.CategoryName}
+                </ListGroupItem>
+            )
+
+        
+          })} 
 
        </ListGroup>
+       
     </div>
   )
 }
