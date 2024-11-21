@@ -67,7 +67,7 @@ function NewFeed() {
           <h3>Blogs Count ({postContent?.TotalElements})</h3>
 
           <InfiniteScroll
-            dataLength={postContent?.Contents.length}
+            dataLength={postContent?.Contents?.length}
             next={changePageInfinite}
             hasMore={postContent.PageNumber < postContent.TotalPages || postContent.TotalPages === 0}
             loader={<h4>Loading...</h4>}
