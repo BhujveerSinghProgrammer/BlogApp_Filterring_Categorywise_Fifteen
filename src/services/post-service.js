@@ -58,3 +58,10 @@ export const uploadPostImage = (image, postId) => {
 };
 
 
+//get posts by pagenumber and pazesize and CategoryId
+
+export const loadAllPostsByPageNumberandPageSizeAndCategoryId=(PageNumberInput,PageSizeInput,Id)=>{
+  return myAxious.get(`/api/ReactJsApis/getpostsByPageNumberAndPageSizeAndCategorywise?PageNumberInput=${PageNumberInput}&PageSizeInput=${PageSizeInput}&Id=${Id}`).then(response=>response.data); 
+}
+
+//

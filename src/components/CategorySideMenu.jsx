@@ -22,7 +22,7 @@ function CategorySideMenu() {
 
   return (
     <div>
-       <ListGroup>
+       <ListGroup style={{marginBottom:'5px'}}>
         {/* action="true" means clickable */}
           <ListGroupItem tag={Link} to="/" action={true} className='border-0'>
                   All Blogs
@@ -31,7 +31,7 @@ function CategorySideMenu() {
 
          {categories && categories.map((category)=>{
             return(
-       <ListGroupItem className='border-0 shadow-0 mt-2' style={{marginTopTop:'2px'}}  action={true}  value={category.Id} key={category.Id} tag={Link}  to={'/categories/'+category.Id} >
+       <ListGroupItem className='border-0 shadow-0 mt-2' style={{marginTop:'2px',}}  action={true}  value={category.Id} key={category.Id} tag={Link}  to={'/categories/'+category.Id} >
                      {category.CategoryName}
        </ListGroupItem>
             )
