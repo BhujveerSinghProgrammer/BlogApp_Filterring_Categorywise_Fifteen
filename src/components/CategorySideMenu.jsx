@@ -29,7 +29,7 @@ function CategorySideMenu() {
 
          {categories && categories.map((category)=>{
             return(
-                <ListGroupItem className='border-0'  action={true}  value={category.Id} key={category.Id}>
+                <ListGroupItem className='border-0' style={{marginTopTop:'2px'}}  action={true}  value={category.Id} key={category.Id}>
                      {category.CategoryName}
                 </ListGroupItem>
             )
