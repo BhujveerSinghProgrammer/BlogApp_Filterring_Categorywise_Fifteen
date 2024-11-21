@@ -4,6 +4,10 @@ import { useParams } from 'react-router-dom';
 import { Col, Container, Row } from "reactstrap";
 import CategorySideMenu from "../components/CategorySideMenu";
 import { loadAllPostsByPageNumberandPageSizeAndCategoryId } from '../services/post-service';
+import { toast } from 'react-toastify';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import Posts from '../components/Posts';
+
 
 function Categories() {
 const{Id}=useParams();
@@ -38,6 +42,7 @@ const{Id}=useParams();
     loadAllPostsByPageNumberandPageSizeAndCategoryId(pageNumber, postContent.PageSize,Id)
       .then((data) => {
         console.log('data to ram ji', data);
+        console.log('category id is',Id);
         // Only append posts that are not already in Contents to avoid duplicates
         setPostContent((prevState) => ({
           Contents: pageNumber === 1 ? data.Contents : [...prevState.Contents, ...data.Contents],
@@ -50,7 +55,7 @@ const{Id}=useParams();
         }));
       })
       .catch((error) => {
-        toast.error('Error in loading posts pagewise');
+        toast.error('Error in loading posts pagewise and categorywise');
       });
   };
 
@@ -61,17 +66,38 @@ const{Id}=useParams();
     }
   };
 
-
-
-
-
-
   return (
    <Base>
     <Container className="mt-3">
     <Row>
          <Col md={2} className="pt-3"><CategorySideMenu/></Col>
-         <Col md={10}></Col>
+         <Col md={10}>
+         
+          <div className="container-fluid">
+      <Row>
+        <Col md={{ size: 12}}>
+          <h3>Blogs Count ({postContent?.TotalElements})</h3>
+
+          <InfiniteScroll
+            dataLength={postContent?.Contents.length}
+            next={changePageInfinite}
+            hasMore={postContent.PageNumber < postContent.TotalPages || postContent.TotalPages === 0}
+            loader={<h4>Loading...</h4>}
+            endMessage={
+              <p style={{ textAlign: 'center' }}>
+                <b>Yay! You have seen it all</b>
+              </p>
+            }
+          >
+            {postContent?.Contents?.map((post) => (
+              <Posts post={post} key={post.Id} />
+            ))}
+          </InfiniteScroll>
+        </Col>
+      </Row>
+    </div>
+
+         </Col>
     </Row>
         {/* <NewFeed/> */}
    </Container>
