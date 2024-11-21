@@ -1,7 +1,8 @@
 import React from 'react'
 import { loadAllCategories } from "../services/category-service";
 import { useEffect, useState, useRef } from "react";
-import { Card, CardBody, Input, Form, Label, Container, Button,ListGroup, ListGroupItem } from "reactstrap";
+import { ListGroup, ListGroupItem } from "reactstrap";
+import { Link } from 'react-router-dom';
 
 function CategorySideMenu() {
 
@@ -11,6 +12,7 @@ function CategorySideMenu() {
     loadAllCategories()
       .then((data) => {
         setCategories([...data]);
+        console.log('These are the categorioes',categories);
       })
       .catch((error) => {
         console.log(error);
@@ -22,16 +24,16 @@ function CategorySideMenu() {
     <div>
        <ListGroup>
         {/* action="true" means clickable */}
-          <ListGroupItem action={true} className='border-0'>
+          <ListGroupItem tag={Link} to="/" action={true} className='border-0'>
                   All Blogs
           </ListGroupItem>
 
 
          {categories && categories.map((category)=>{
             return(
-                <ListGroupItem className='border-0' style={{marginTopTop:'2px'}}  action={true}  value={category.Id} key={category.Id}>
+       <ListGroupItem className='border-0 shadow-0 mt-2' style={{marginTopTop:'2px'}}  action={true}  value={category.Id} key={category.Id} tag={Link}  to={'/categories/'+category.Id} >
                      {category.CategoryName}
-                </ListGroupItem>
+       </ListGroupItem>
             )
 
         

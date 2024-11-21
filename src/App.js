@@ -13,13 +13,14 @@ import Services from './pages/Services';
 import ContactUs from './pages/ContactUs';
 
 
-  import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Privateroute from './components/Privateroute';
 import Userdashboard from './pages/user-routes/Userdashboard';
 import Profileinfo from './pages/user-routes/Profileinfo';
 import PostPage from './pages/PostPage';
 import UserProvider from './context/UserProvider';
+import Categories from './pages/categories';
 
 function App() {
   return (
@@ -43,6 +44,8 @@ function App() {
   <Route path='/services' element={<Services/>} />
   <Route path='/contactus' element={<ContactUs/>} />
   <Route path='/Post/:Id' element={<PostPage/>} />
+  <Route path='/categories/:Id' element={<Categories/>} /> 
+  {/* to add dynamic id we use like " <Route path='/Post/:Id' element={<PostPage/>} /> " */}
 
 {/* // for private route */}
     <Route path='/user' element={<Privateroute/>}>
