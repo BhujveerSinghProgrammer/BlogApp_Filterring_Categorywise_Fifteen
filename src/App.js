@@ -20,7 +20,8 @@ import Userdashboard from './pages/user-routes/Userdashboard';
 import Profileinfo from './pages/user-routes/Profileinfo';
 import PostPage from './pages/PostPage';
 import UserProvider from './context/UserProvider';
-import Categories from './pages/categories';
+import Categories from './pages/Categories';
+
 function App() {
   return (
     //  <div className="App">
